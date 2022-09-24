@@ -14,9 +14,13 @@ services:
   service1:
     image: service1
     build: ./service1
+    ports:
+      - 7001:7001
     restart: unless-stopped
   service2:
     image: service2
     build: ./service2
+    ports:
+      - 7002:7002
     restart: unless-stopped
     
