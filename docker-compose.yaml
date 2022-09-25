@@ -4,23 +4,20 @@ services:
     image: nginx:latest
     restart: unless-stopped
     ports:
-      - 8000:8000
+      - 1109:1109
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - service1
-      - service2
+      - jaf_server
+      
 
-  service1:
-    image: service1
-    build: ./service1
-    ports:
-      - 7001:7001
+  jaf_server:
+    image: jaf_server
+    build: ./jaf_server
     restart: unless-stopped
-  service2:
-    image: service2
-    build: ./service2
-    ports:
-      - 7002:7002
-    restart: unless-stopped
+    volumes:
+      - /bsee_1109:/service1/names
+
+volumes:
+  bsee_1109:
     

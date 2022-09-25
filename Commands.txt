@@ -1,0 +1,2 @@
+docker build -t jaf_ser .
+docker run -p 1109:1109 
