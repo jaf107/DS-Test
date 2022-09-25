@@ -1,0 +1,33 @@
+#Check Docker version on the machine
+$ docker --version
+
+# Show summary of images/containers in the system
+$ docker info
+
+Manage Docker images
+# Run a Docker image
+$ docker run hello-world
+
+# List Docker images
+$ docker image ls
+$ docker image ls -a  # List all images
+
+# Remove Docker images
+$ docker image rm <image id> # Remove specified image
+$ docker image rm $(docker image ls -a -q) # Remove all images
+$ docker image rm $(docker images -f "dangling=true" -q) # Remove all dangling images
+
+Build and run Docker containers
+# Create image using this directory's Dockerfile
+$ docker build -t friendlyhello .  
+
+# Run "friendlyname" mapping port 4000 of host to port 80 on container
+$ docker run -p 4000:80 friendlyhello       # host-4000:container-80
+
+# Run container in background
+$ docker run -d -p 4000:80 friendlyhello    # Detached mode
+
+# Attach a volume
+# Saves db files inside container in ~/Desktop/data/db on host machine
+docker run -v ~/Desktop/data/db:/data/db  mongo 
+
